@@ -1,0 +1,14 @@
+spring:
+   application:
+      name: surveyapp-backend
+   cloud:
+      config: 
+         failFast: true
+         enabled: false
+         discovery:
+            enabled: false
+      consul:
+         enabled: false
+eureka:
+  client:
+    enabled: false
