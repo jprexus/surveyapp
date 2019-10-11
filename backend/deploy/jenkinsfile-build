@@ -1,9 +1,11 @@
 pipeline {
     agent any
+    tools { 
+        maven 'maven-3.6.2-local'
+    }
     stages {
         stage('build') {
             steps {
-                sh 'export PATH=/Users/Shared/Jenkins/apache-maven-3.6.2/bin:$PATH'
                 sh 'cd backend'
                 sh 'mvn clean install'
             }
