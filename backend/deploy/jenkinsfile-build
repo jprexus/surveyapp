@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'mvn -b clean install test -f backend/pom.xml'
+                sh 'mvn clean install test -f backend/pom.xml'
             }
         }
     }
