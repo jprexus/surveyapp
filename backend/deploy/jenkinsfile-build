@@ -6,13 +6,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'mvn -b install test -f backend/pom.xml'
+                sh 'mvn -b clean install test -f backend/pom.xml'
             }
         }
     }
     post {
         always {
-            junit 'target/surefire-reports/*.xml'
+            junit 'backend/target/surefire-reports/*.xml'
         }
     }
 }
