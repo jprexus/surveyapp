@@ -12,3 +12,8 @@ spring:
       username: sa
       password: sa
       continue-on-error: true
+   main:
+      allow-bean-definition-overriding: true 
+management:
+   security:
+      flag: false

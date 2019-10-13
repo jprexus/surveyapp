@@ -1,4 +1,4 @@
-package com.surveyapp.backend;
+package com.surveyshrike.surveyapp.backend;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
