@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Stop Server') {
             steps {
-                sh 'ssh -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem ec2-user@ec2-13-233-13-105.ap-south-1.compute.amazonaws.com & sudo su & cd /apps/surveyshrike/surveyapp/scripts & ./stop.sh'
+                sh 'ssh -t -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem ec2-user@ec2-13-233-13-105.ap-south-1.compute.amazonaws.com & sudo su & cd /apps/surveyshrike/surveyapp/scripts & ./stop.sh'
             }
         }
         stage('Deploy') {
