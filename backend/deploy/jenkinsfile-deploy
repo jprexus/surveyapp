@@ -21,7 +21,7 @@ pipeline {
         }     
 		stage('Start Server') {
             steps {
-                
+                sh 'echo here'
             }
         }
     }
