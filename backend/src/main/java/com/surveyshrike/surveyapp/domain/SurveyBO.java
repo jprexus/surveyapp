@@ -6,6 +6,8 @@ public class SurveyBO {
 
 	private String user;
 
+	private String email;
+
 	private boolean attending;
 
 	private String reason;
@@ -40,6 +42,14 @@ public class SurveyBO {
 
 	public void setReason(String reason) {
 		this.reason = reason;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

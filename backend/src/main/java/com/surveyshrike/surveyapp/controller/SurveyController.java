@@ -3,9 +3,11 @@ package com.surveyshrike.surveyapp.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,9 +33,13 @@ public class SurveyController {
 		return this.surveyService.findAll();
 	}
 
-	@PostMapping("/surveys")
-	public void addSurvey(@RequestBody SurveyBO surveyBO) {
+	@ApiOperation(value = "Post a Survey")
+	@ApiResponses(value = { @ApiResponse(code = 201, message = "Successfully posted a Survey"),
+			@ApiResponse(code = 500, message = "Internal Server Error") })
+	@PutMapping("/surveys")
+	public ResponseEntity<SurveyBO> addSurvey(@RequestBody SurveyBO surveyBO) {
 		this.surveyService.save(surveyBO);
+		return new ResponseEntity<SurveyBO>(HttpStatus.CREATED);
 	}
 
 }

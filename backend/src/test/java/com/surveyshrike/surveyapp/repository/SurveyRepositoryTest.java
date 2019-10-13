@@ -23,6 +23,7 @@ public class SurveyRepositoryTest {
 		entity.setUser("anand");
 		entity.setAttending(Boolean.FALSE);
 		entity.setReason("Busy with work");
+		entity.setEmail("abc@abc.com");
 		final Survey savedEntity = this.repository.save(entity);
 		Assert.assertNotNull(savedEntity);
 		Assert.assertNotNull(savedEntity.getId());
@@ -34,6 +35,7 @@ public class SurveyRepositoryTest {
 		entity.setUser("anand");
 		entity.setAttending(Boolean.FALSE);
 		entity.setReason("Busy with work");
+		entity.setEmail("abc@abc.com");
 		final Survey savedEntity = this.repository.save(entity);
 		final Survey foundEntity = this.repository.findById(savedEntity.getId()).get();
 		Assert.assertNotNull(foundEntity);
@@ -43,6 +45,7 @@ public class SurveyRepositoryTest {
 				foundEntity.isAttending());
 		Assert.assertEquals("Looks like the saved entity is not equal", savedEntity.getReason(),
 				foundEntity.getReason());
+		Assert.assertEquals("Looks like the saved entity is not equal", savedEntity.getEmail(), foundEntity.getEmail());
 	}
 
 }

@@ -13,18 +13,17 @@ public class SurveyBOBuilder {
 		bo.setUser(entity.getUser());
 		bo.setAttending(entity.isAttending());
 		bo.setReason(entity.getReason());
+		bo.setEmail(entity.getEmail());
 		return bo;
 	}
 
 	public static Survey build(SurveyBO bo) {
-		if (bo.getId() == null) {
-			final Survey entity = new Survey();
-			entity.setUser(bo.getUser());
-			entity.setAttending(bo.isAttending());
-			entity.setReason(bo.getReason());
-			return entity;
-		}
-		return null;
+		final Survey entity = new Survey();
+		entity.setUser(bo.getUser());
+		entity.setAttending(bo.isAttending());
+		entity.setReason(bo.getReason());
+		entity.setEmail(bo.getEmail());
+		return entity;
 	}
 
 	public static List<SurveyBO> build(Iterable<Survey> entities) {
