@@ -9,6 +9,9 @@ export class SurveyService {
   private surveysUrl: string;
 
   constructor(private http: HttpClient) {
+    /**
+    this.surveysUrl = 'http://ec2-13-233-13-105.ap-south-1.compute.amazonaws.com/surveys';
+     */
     this.surveysUrl = 'http://localhost:10080/surveys';
   }
  

@@ -1,3 +1,4 @@
+<div *ngIf="user">
 <div class="card my-5">
   <div class="card-body">
     <form (ngSubmit)="onSubmit()" #userForm="ngForm">
@@ -30,4 +31,5 @@
       <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
     </form>
   </div>
+</div>
 </div>

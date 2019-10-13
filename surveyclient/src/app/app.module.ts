@@ -9,7 +9,14 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SurveyService } from './service/survey.service';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angular4-social-login';
 
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('161278919223-dhv6bncuuvk3lud2tucj2qrg0if4ji99.apps.googleusercontent.com')
+  }
+]);
 
 @NgModule({
   declarations: [
@@ -21,7 +28,8 @@ import { SurveyService } from './service/survey.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SocialLoginModule.initialize(config)
   ],
   providers: [SurveyService],
   bootstrap: [AppComponent]
