@@ -33,20 +33,20 @@ public class SurveyControllerTest {
 	public void setUp() throws Exception {
 		MockitoAnnotations.initMocks(this);
 		this.mvc = MockMvcBuilders.standaloneSetup(this.controller).build();
-		this.mvc.perform(MockMvcRequestBuilders.post("/surveys").content(getSurveyBO())
+		this.mvc.perform(MockMvcRequestBuilders.put("/v1/survey").content(getSurveyBO())
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON));
 	}
 
 	@Test
 	public void getSurveysAPI() throws Exception {
-		this.mvc.perform(MockMvcRequestBuilders.get("/surveys").accept(MediaType.APPLICATION_JSON))
+		this.mvc.perform(MockMvcRequestBuilders.get("/v1/surveys").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
 	}
 
 	@Test
 	public void createEmployeeAPI() {
 		try {
-			this.mvc.perform(MockMvcRequestBuilders.put("/surveys").content(getSurveyBO())
+			this.mvc.perform(MockMvcRequestBuilders.put("/v1/survey").content(getSurveyBO())
 					.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
 					.andExpect(status().isCreated());
 		} catch (final Exception e) {

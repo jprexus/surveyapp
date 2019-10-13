@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'mvn clean install -f backend/pom.xml -Dskiptests'
+                sh 'mvn clean install -f backend/pom.xml -Dskiptests -Dmaven.test.skip=true'
             }
         }
         stage('Stop Server') {
