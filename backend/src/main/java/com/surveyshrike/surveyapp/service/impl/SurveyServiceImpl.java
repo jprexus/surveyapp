@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.surveyshrike.surveyapp.domain.SurveyBO;
-import com.surveyshrike.surveyapp.domain.SurveyBOBuilder;
+import com.surveyshrike.surveyapp.domain.SurveyBOBuilderHelper;
 import com.surveyshrike.surveyapp.entity.Survey;
 import com.surveyshrike.surveyapp.repository.ISurveyRepository;
 import com.surveyshrike.surveyapp.service.ISurveyService;
@@ -19,12 +19,12 @@ public class SurveyServiceImpl implements ISurveyService {
 
 	@Override
 	public SurveyBO save(SurveyBO surveyBO) {
-		final Survey entity = this.surveyRepository.save(SurveyBOBuilder.build(surveyBO));
-		return SurveyBOBuilder.build(entity);
+		final Survey entity = this.surveyRepository.save(SurveyBOBuilderHelper.build(surveyBO));
+		return SurveyBOBuilderHelper.build(entity);
 	}
 
 	@Override
 	public List<SurveyBO> findAll() {
-		return SurveyBOBuilder.build(this.surveyRepository.findAll());
+		return SurveyBOBuilderHelper.build(this.surveyRepository.findAll());
 	}
 }
