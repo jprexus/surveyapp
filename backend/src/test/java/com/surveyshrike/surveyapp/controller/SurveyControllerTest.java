@@ -2,6 +2,7 @@ package com.surveyshrike.surveyapp.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.surveyshrike.surveyapp.BackendApplicationConfig;
 import com.surveyshrike.surveyapp.domain.SurveyBO;
@@ -42,22 +44,23 @@ public class SurveyControllerTest {
 	}
 
 	@Test
-	public void createEmployeeAPI() throws Exception {
-		this.mvc.perform(MockMvcRequestBuilders.put("/surveys").content(getSurveyBO())
-				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isCreated());
+	public void createEmployeeAPI() {
+		try {
+			this.mvc.perform(MockMvcRequestBuilders.put("/surveys").content(getSurveyBO())
+					.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+					.andExpect(status().isCreated());
+		} catch (final Exception e) {
+			Assert.fail(e.getMessage());
+		}
 	}
 
-	public static String getSurveyBO() {
+	public static String getSurveyBO() throws JsonProcessingException {
 		final SurveyBO bo = new SurveyBO();
 		bo.setUser("anand");
 		bo.setEmail("pqr@abc.com");
 		bo.setAttending(Boolean.TRUE);
-		try {
-			return new ObjectMapper().writeValueAsString(bo);
-		} catch (final Exception e) {
-			throw new RuntimeException(e);
-		}
+
+		return new ObjectMapper().writeValueAsString(bo);
 	}
 
 }

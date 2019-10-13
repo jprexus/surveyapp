@@ -18,6 +18,12 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+/**
+ * Survey Controller with Get and Put methods
+ *
+ * @author anandpillai
+ *
+ */
 @RestController
 @CrossOrigin
 public class SurveyController {
@@ -30,6 +36,7 @@ public class SurveyController {
 			@ApiResponse(code = 500, message = "Internal Server Error") })
 	@GetMapping("/surveys")
 	public List<SurveyBO> getSurveys() {
+		// Find all surveys
 		return this.surveyService.findAll();
 	}
 
@@ -39,7 +46,15 @@ public class SurveyController {
 	@PutMapping("/surveys")
 	public ResponseEntity<SurveyBO> addSurvey(@RequestBody SurveyBO surveyBO) {
 		this.surveyService.save(surveyBO);
-		return new ResponseEntity<SurveyBO>(HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
+
+	public ISurveyService getSurveyService() {
+		return this.surveyService;
+	}
+
+	public void setSurveyService(final ISurveyService surveyService) {
+		this.surveyService = surveyService;
 	}
 
 }

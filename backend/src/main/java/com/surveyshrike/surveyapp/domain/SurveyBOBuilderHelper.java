@@ -5,7 +5,10 @@ import java.util.List;
 
 import com.surveyshrike.surveyapp.entity.Survey;
 
-public class SurveyBOBuilder {
+public final class SurveyBOBuilderHelper {
+
+	private SurveyBOBuilderHelper() {
+	}
 
 	public static SurveyBO build(Survey entity) {
 		final SurveyBO bo = new SurveyBO();
@@ -27,7 +30,7 @@ public class SurveyBOBuilder {
 	}
 
 	public static List<SurveyBO> build(Iterable<Survey> entities) {
-		final List<SurveyBO> bos = new ArrayList<SurveyBO>();
+		final List<SurveyBO> bos = new ArrayList<>();
 		entities.forEach(e -> bos.add(build(e)));
 		return bos;
 	}
