@@ -17,13 +17,13 @@
       <div class="form-group row">
           <label for="attending">Are you attending?</label>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="attending" id="attendingyes" value="true" checked>
+        <input class="form-check-input" [(ngModel)]="survey.attending" type="radio" name="attending" id="attendingyes" value="true" checked>
         <label class="form-check-label" for="attendingyes">
           Yes
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="attending" id="attendingno" value="false">
+        <input class="form-check-input" [(ngModel)]="survey.attending" type="radio" name="attending" id="attendingno" value="false">
         <label class="form-check-label" for="attendingno">
           No
         </label>

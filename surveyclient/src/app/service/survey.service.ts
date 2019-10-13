@@ -6,21 +6,21 @@ import { Survey } from '../model/survey';
 @Injectable()
 export class SurveyService {
 
-  private surveysUrl: string;
+  private apiUrl: string;
 
   constructor(private http: HttpClient) {
     /**
-    this.surveysUrl = 'http://ec2-13-233-13-105.ap-south-1.compute.amazonaws.com/surveys';
+    this.apiUrl = 'http://ec2-13-233-13-105.ap-south-1.compute.amazonaws.com/surveys';
      */
-    this.surveysUrl = 'http://localhost:10080/surveys';
+    this.apiUrl = 'http://localhost:10080/api/v1/';
   }
  
   public findAll(): Observable<Survey[]> {
-    return this.http.get<Survey[]>(this.surveysUrl);
+    return this.http.get<Survey[]>(this.apiUrl + "surveys");
   }
  
   public save(survey: Survey) {
-    return this.http.put<Survey>(this.surveysUrl, survey);
+    return this.http.put<Survey>(this.apiUrl + "survey", survey);
   }
 
 }
