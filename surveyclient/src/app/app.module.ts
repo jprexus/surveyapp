@@ -17,6 +17,9 @@ let config = new AuthServiceConfig([
     provider: new GoogleLoginProvider('161278919223-dhv6bncuuvk3lud2tucj2qrg0if4ji99.apps.googleusercontent.com')
   }
 ]);
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -29,9 +32,15 @@ let config = new AuthServiceConfig([
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    SocialLoginModule.initialize(config)
+    SocialLoginModule
   ],
-  providers: [SurveyService],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    },
+    SurveyService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

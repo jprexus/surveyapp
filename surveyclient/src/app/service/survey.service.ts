@@ -9,10 +9,11 @@ export class SurveyService {
   private apiUrl: string;
 
   constructor(private http: HttpClient) {
+    
+    this.apiUrl = 'http://ec2-13-233-13-105.ap-south-1.compute.amazonaws.com/api/v1/';
     /**
-    this.apiUrl = 'http://ec2-13-233-13-105.ap-south-1.compute.amazonaws.com/surveys';
-     */
     this.apiUrl = 'http://localhost:10080/api/v1/';
+    */
   }
  
   public findAll(): Observable<Survey[]> {
