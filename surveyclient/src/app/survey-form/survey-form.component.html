@@ -9,6 +9,12 @@
           required #name="ngModel">
       </div>
       <div class="form-group row">
+          <label for="email">Email</label>
+          <input type="text" [(ngModel)]="survey.email" 
+            class="form-control" id="email" name="email" placeholder="Enter your email"
+            required #name="ngModel">
+        </div>
+      <div class="form-group row">
           <label for="attending">Are you attending?</label>
       <div class="form-check">
         <input class="form-check-input" type="radio" name="attending" id="attendingyes" value="true" checked>

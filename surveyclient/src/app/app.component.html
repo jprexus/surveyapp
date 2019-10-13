@@ -10,7 +10,7 @@
         </div>
       </div>
       <div *ngIf="user">
-          <h4>Hello {{ user.name }} !!!</h4>
+          <h4>Hello {{ user.name }} !!!</h4> <img src="{{ user.photoUrl }}">
       <ul class="text-left list-inline py-3">
           <li class="list-inline-item"><a routerLink="/addsurvey" class="btn btn-info">Respond to Invitation</a></li>
           <li class="list-inline-item"><a routerLink="/surveys" class="btn btn-info">View Responses</a></li>

@@ -20,7 +20,7 @@ export class SurveyService {
   }
  
   public save(survey: Survey) {
-    return this.http.post<Survey>(this.surveysUrl, survey);
+    return this.http.put<Survey>(this.surveysUrl, survey);
   }
 
 }

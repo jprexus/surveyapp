@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService, GoogleLoginProvider } from 'angular4-social-login';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   title = 'Survey Strike - Invitation to attend ceremony!!!';
   user: any;
  
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router,) { }
  
   // Method to sign in with google.
   signIn(platform : string): void {
@@ -28,5 +29,6 @@ export class AppComponent {
     this.authService.signOut();
     this.user = null;
     console.log('User signed out.');
+    this.router.navigate(['/']);
   }
 }

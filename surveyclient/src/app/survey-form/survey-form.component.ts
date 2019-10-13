@@ -20,7 +20,10 @@ export class SurveyFormComponent implements OnInit {
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
-      if(user !=null){this.survey.user = user.name;} 
+      if(user !=null){
+        this.survey.user = user.name;
+        this.survey.email = user.email;
+      }
       this.user=user;
     });
   }

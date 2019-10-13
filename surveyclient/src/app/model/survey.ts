@@ -3,4 +3,5 @@ export class Survey {
     user: string;
     attending: boolean;
     reason: string;
+    email: string;
 }
