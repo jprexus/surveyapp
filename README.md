@@ -38,8 +38,9 @@ frontend
 The Build Jobs create the artefacts and runs the tests.
 The Deploy Jobs will push the artefacts to AWS EC2 servers
 **Sample Pipeline Job**
-
+![Pipeline Job](https://github.com/jprexus/surveyapp/blob/develop/Pipeline%20Job.png)
 **JUnit Test Report**
-
+![Test Report](https://github.com/jprexus/surveyapp/blob/develop/Test%20Result.png)
 **Code Coverage Report**
 ![Code Coverage](https://github.com/jprexus/surveyapp/blob/develop/Code%20Coverage.png)
+
