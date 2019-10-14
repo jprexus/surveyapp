@@ -1,11 +1,17 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent any
+    tools { 
+        maven 'maven-3.6.2-local'
+    }
     stages {
         stage('build') {
             steps {
-                cd backend
-                sh 'mvn clean install'
+                sh 'mvn clean install test -f backend/pom.xml'
             }
         }
     }
+    post {
+        always {
+            junit 'backend/target/surefire-reports/*.xml'
+    }}
 }

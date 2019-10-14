@@ -1,0 +1,41 @@
+<div *ngIf="user">
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group row">
+        <label for="user">Name</label>
+        <input type="text" [(ngModel)]="survey.user" 
+          class="form-control" id="name" name="name" placeholder="Enter your name"
+          required #name="ngModel">
+      </div>
+      <div class="form-group row">
+          <label for="email">Email</label>
+          <input type="text" [(ngModel)]="survey.email" 
+            class="form-control" id="email" name="email" placeholder="Enter your email"
+            required #name="ngModel">
+        </div>
+      <div class="form-group row">
+          <label for="attending">Are you attending?</label>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="survey.attending" type="radio" name="attending" id="attendingyes" value="true" checked>
+        <label class="form-check-label" for="attendingyes">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="survey.attending" type="radio" name="attending" id="attendingno" value="false">
+        <label class="form-check-label" for="attendingno">
+          No
+        </label>
+      </div>
+    </div>
+      <div class="form-group row">
+        <label for="reason">Reason for not attending</label>
+        <input type="text" [(ngModel)]="survey.reason" 
+          class="form-control" id="reason" name="reason" placeholder="Reason for not attending">
+      </div>
+      <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
+</div>

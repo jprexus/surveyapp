@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    stages {
+        stage('build') {
+            steps {
+                sh 'cd surveyclient'
+                sh 'ng build --base-href /surveyapp/ --prod'
+            }
+        }
+        stage('prepare') {
+            steps {
+                sh 'cp -r surveyclient/dist surveyclient'
+                sh 'mv dist surveyapp'
+                sh 'tar -cvf surveyapp.tar surveyapp/'
+            }
+        }
+        stage('Stop Server') {
+            steps {
+                sh "ssh -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem ec2-user@ec2-13-233-123-179.ap-south-1.compute.amazonaws.com 'bash -s' < surveyclient/deploy/stop-backend.sh"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'scp -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem surveyclient/surveyapp.tar ec2-user@ec2-13-233-123-179.ap-south-1.compute.amazonaws.com:/apps/surveyshrike/surveyapp/frontend/apache-tomcat-8.5.46/webapps'
+            }
+        }     
+		stage('Start Server') {
+            steps {
+            	sh "ssh -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem ec2-user@ec2-13-233-123-179.ap-south-1.compute.amazonaws.com 'bash -s' < surveyclient/deploy/start-backend.sh"
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
-package com.surveyapp.backend;
+package com.surveyshrike.surveyapp.backend;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,7 @@ public class BackendApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		Assert.assertTrue(Boolean.TRUE);
 	}
 
 }

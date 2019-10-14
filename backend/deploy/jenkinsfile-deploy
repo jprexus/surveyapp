@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    tools { 
+        maven 'maven-3.6.2-local'
+    }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn clean install -f backend/pom.xml -Dskiptests -Dmaven.test.skip=true'
+            }
+        }
+        stage('Stop Server') {
+            steps {
+                sh "ssh -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem ec2-user@ec2-13-233-13-105.ap-south-1.compute.amazonaws.com 'bash -s' < backend/deploy/stop-backend.sh"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'scp -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem backend/target/backend-0.0.1-SNAPSHOT.jar ec2-user@ec2-13-233-13-105.ap-south-1.compute.amazonaws.com:/apps/surveyshrike/surveyapp/backend/lib'
+            }
+        }     
+		stage('Start Server') {
+            steps {
+            	sh "ssh -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem ec2-user@ec2-13-233-13-105.ap-south-1.compute.amazonaws.com 'bash -s' < backend/deploy/start-backend.sh"
+            }
+        }
+    }
+}
