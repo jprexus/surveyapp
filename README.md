@@ -23,6 +23,11 @@ Go To http://localhost:10080/swagger-ui.html</br>
 
 **DEV Region** http://ec2-13-233-13-105.ap-south-1.compute.amazonaws.com/api/swagger-ui.html</br>
 
+
+## Architecture
+![Code Coverage](https://github.com/jprexus/surveyapp/blob/develop/arch.png)
+
+
 ## Build and Deployment
 >Build and Deployment is done using local Jenkins pipeline jobs</br>
 
