@@ -11,8 +11,7 @@ pipeline {
         }
         stage('Stop Server') {
             steps {
-                //sh 'ssh -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem ec2-user@ec2-13-233-13-105.ap-south-1.compute.amazonaws.com & sudo su & bash /apps/surveyshrike/surveyapp/scripts/stop.sh'
-                sh 'Stopped Server'
+                sh "ssh -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem ec2-user@ec2-13-233-13-105.ap-south-1.compute.amazonaws.com ‘bash -s’ < backend/deploy/stop-backend.sh"
             }
         }
         stage('Deploy') {
@@ -22,8 +21,7 @@ pipeline {
         }     
 		stage('Start Server') {
             steps {
-            	//sh 'ssh -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem ec2-user@ec2-13-233-13-105.ap-south-1.compute.amazonaws.com & sudo su & bash /apps/surveyshrike/surveyapp/scripts/start.sh'
-                sh 'Started Server'
+            	sh "ssh -i /Users/Shared/Jenkins/keys/surveyapp-instance.pem ec2-user@ec2-13-233-13-105.ap-south-1.compute.amazonaws.com ‘bash -s’ < backend/deploy/stop-backend.sh"
             }
         }
     }
